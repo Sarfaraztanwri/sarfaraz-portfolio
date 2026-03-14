@@ -35,13 +35,13 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, -50, 0], rotate: [0, 90, 0], opacity: [0.03, 0.08, 0.03] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full"
+          className="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] max-w-500px max-h-500px rounded-full"
           style={{ border: "1px solid rgba(245,197,24,0.2)", background: "rgba(245,197,24,0.02)", filter: "blur(60px)" }}
         />
         <motion.div
           animate={{ y: [0, 50, 0], rotate: [0, -90, 0], opacity: [0.02, 0.06, 0.02] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[10%] left-[5%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full"
+          className="absolute bottom-[10%] left-[5%] w-[30vw] h-[30vw] max-w-400px max-h-400px rounded-full"
           style={{ background: "rgba(245,197,24,0.03)", filter: "blur(60px)" }}
         />
       </div>
@@ -60,7 +60,7 @@ export function Hero() {
               className="font-medium mb-4 text-lg md:text-xl flex items-center gap-3"
               style={{ color: "#888" }}
             >
-              <span className="w-12 h-[1px] block" style={{ backgroundColor: "#F5C518" }}></span>
+              <span className="w-12 h-1px block" style={{ backgroundColor: "#F5C518" }}></span>
               Hello, I'm
             </motion.p>
 
@@ -190,7 +190,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
-            className="hidden lg:flex relative items-end justify-center flex-shrink-0"
+            className="hidden lg:flex relative items-end justify-center shrink-0"
             style={{ width: "500px", height: "620px", marginRight: "-30px" }}
           >
             <motion.div
@@ -246,7 +246,7 @@ export function Hero() {
   <motion.div
     animate={{ y: [0, 8, 0] }}
     transition={{ repeat: Infinity, duration: 1.5 }}
-    className="w-[1px] h-12"
+    className="w-1px h-12"
     style={{ background: "linear-gradient(to bottom, #F5C518, transparent)" }}
   />
 </motion.div>
@@ -262,7 +262,7 @@ export function Hero() {
   <motion.div
     animate={{ y: [0, 6, 0] }}
     transition={{ repeat: Infinity, duration: 1.5 }}
-    className="w-[1px] h-8"
+    className="w-1px h-8"
     style={{ background: "linear-gradient(to bottom, #F5C518, transparent)" }}
   />
 </motion.div>
