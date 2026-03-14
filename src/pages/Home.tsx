@@ -43,7 +43,7 @@ export default function Home() {
         {isLoading ? (
           <motion.div
             key="loader"
-            className="fixed inset-0 z-[100] overflow-hidden flex items-center justify-center"
+            className="fixed inset-0 z-100 overflow-hidden flex items-center justify-center"
             style={{ backgroundColor: "#0A0A0A" }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
@@ -141,7 +141,7 @@ export default function Home() {
 
             {/* Yellow progress line */}
             <motion.div
-              className="absolute bottom-0 left-0 h-[2px]"
+              className="absolute bottom-0 left-0 h-0.5"
               style={{ backgroundColor: "#F5C518" }}
               animate={{ width: `${count}%` }}
               transition={{ duration: 0.05, ease: "linear" }}
