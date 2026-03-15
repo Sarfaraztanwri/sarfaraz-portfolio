@@ -250,7 +250,7 @@ export function Hero() {
         />
       </motion.div>
 
-      
+
     </section>
   );
 }
