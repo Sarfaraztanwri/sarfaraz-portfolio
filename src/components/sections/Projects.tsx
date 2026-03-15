@@ -95,7 +95,7 @@ const ALL_PROJECTS = [
 const FILTERS = [
   "All",
   "Graphic Design",
-  "Social Media",
+  "Social Media Management",
   "Web Development",
   "Video Editing",
 ];
