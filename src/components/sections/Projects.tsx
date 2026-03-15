@@ -304,94 +304,94 @@ export function Projects() {
         )}
       </div>
       {lightboxIndex !== null && (
-  <div
-    onClick={closeLightbox}
-    style={{
-      position: "fixed",
-      inset: 0,
-      background: "rgba(0,0,0,0.95)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      zIndex: 999,
-    }}
-  >
-    {/* Close */}
-    <button
-      onClick={closeLightbox}
-      style={{
-        position: "absolute",
-        top: 30,
-        right: 30,
-        background: "#F5C518",
-        width: 45,
-        height: 45,
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <X size={20} />
-    </button>
+        <div
+          onClick={closeLightbox}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.95)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 999,
+          }}
+        >
+          {/* Close */}
+          <button
+            onClick={closeLightbox}
+            style={{
+              position: "absolute",
+              top: 30,
+              right: 30,
+              background: "#F5C518",
+              width: 45,
+              height: 45,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <X size={20} />
+          </button>
 
-    {/* Prev */}
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        prevImage();
-      }}
-      style={{
-        position: "absolute",
-        left: 30,
-        top: "50%",
-        transform: "translateY(-50%)",
-        background: "#F5C518",
-        width: 45,
-        height: 45,
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <ChevronLeft />
-    </button>
+          {/* Prev */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            style={{
+              position: "absolute",
+              left: 30,
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "#F5C518",
+              width: 45,
+              height: 45,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ChevronLeft />
+          </button>
 
-    {/* Image */}
-    <img
-      src={filtered[lightboxIndex].image}
-      style={{
-        maxWidth: "85vw",
-        maxHeight: "80vh",
-        objectFit: "contain",
-      }}
-    />
+          {/* Image */}
+          <img
+            src={filtered[lightboxIndex].image}
+            style={{
+              maxWidth: "85vw",
+              maxHeight: "80vh",
+              objectFit: "contain",
+            }}
+          />
 
-    {/* Next */}
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        nextImage();
-      }}
-      style={{
-        position: "absolute",
-        right: 30,
-        top: "50%",
-        transform: "translateY(-50%)",
-        background: "#F5C518",
-        width: 45,
-        height: 45,
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <ChevronRight />
-    </button>
-  </div>
-)}
+          {/* Next */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            style={{
+              position: "absolute",
+              right: 30,
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "#F5C518",
+              width: 45,
+              height: 45,
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <ChevronRight />
+          </button>
+        </div>
+      )}
 
     </section>
   );

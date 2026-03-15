@@ -129,7 +129,7 @@ export function Contact() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div
-                        className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                        className="w-6 h-6 rounded flex items-center justify-center shrink-0"
                         style={{ backgroundColor: "rgba(245,197,24,0.15)", border: "1px solid rgba(245,197,24,0.3)" }}
                       >
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
