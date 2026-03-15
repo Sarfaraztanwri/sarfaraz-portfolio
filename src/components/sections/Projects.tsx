@@ -6,7 +6,8 @@ const ALL_PROJECTS = [
     id: 1,
     title: "Kashmir Solidarity Day",
     category: "Graphic Design",
-    description: "Social media post design for World Memon Organization Pakistan Chapter — Kashmir Solidarity Day campaign.",
+    description:
+      "Social media post design for World Memon Organization Pakistan Chapter — Kashmir Solidarity Day campaign.",
     image: "/images/Kashmir_Solidarity_Day.jpg",
     link: null,
   },
@@ -14,7 +15,8 @@ const ALL_PROJECTS = [
     id: 2,
     title: "Champion Insecticide Ad",
     category: "Graphic Design",
-    description: "Product advertisement design for Champion Insecticide by Zakaria Enterprises — Total Knock Out campaign.",
+    description:
+      "Product advertisement design for Champion Insecticide by Zakaria Enterprises — Total Knock Out campaign.",
     image: "/images/Champion_Insecticide_Ad.jpg",
     link: null,
   },
@@ -22,7 +24,8 @@ const ALL_PROJECTS = [
     id: 3,
     title: "Saliqu Logo Design",
     category: "Graphic Design",
-    description: "Brand identity and logo design for Saliqu — modern S lettermark with mockup presentation.",
+    description:
+      "Brand identity and logo design for Saliqu — modern S lettermark with mockup presentation.",
     image: "/images/saliqu-logo.jpg",
     link: null,
   },
@@ -30,7 +33,8 @@ const ALL_PROJECTS = [
     id: 4,
     title: "Baitussalam Magazines Post",
     category: "Social Media",
-    description: "Social media post design for Baitussalam Publications showcasing their magazine collection.",
+    description:
+      "Social media post design for Baitussalam Publications showcasing their magazine collection.",
     image: "/images/baitussalam-magazines.jpg",
     link: null,
   },
@@ -38,7 +42,8 @@ const ALL_PROJECTS = [
     id: 5,
     title: "Miana Rawi Post",
     category: "Social Media",
-    description: "Islamic social media post design for Baitussalam Publications — Urdu calligraphy content.",
+    description:
+      "Islamic social media post design for Baitussalam Publications — Urdu calligraphy content.",
     image: "/images/miana-rawi.jpg",
     link: null,
   },
@@ -46,7 +51,8 @@ const ALL_PROJECTS = [
     id: 6,
     title: "PSL Safari Water Bottle Ad",
     category: "Graphic Design",
-    description: "Sports event social media graphic for Safari Water Bottle — PSL 6 Multan Sultans vs Peshawar Zalmi.",
+    description:
+      "Sports event social media graphic for Safari Water Bottle — PSL 6 Multan Sultans vs Peshawar Zalmi.",
     image: "/images/psl-safari.jpg",
     link: null,
   },
@@ -54,7 +60,8 @@ const ALL_PROJECTS = [
     id: 7,
     title: "Portfolio Website",
     category: "Web Development",
-    description: "Personal portfolio built with React, TypeScript and Tailwind CSS with modern animations.",
+    description:
+      "Personal portfolio built with React, TypeScript and Tailwind CSS with modern animations.",
     image: "/images/portfolio-web.png",
     link: "https://sarfaraztanwri.com",
   },
@@ -62,22 +69,48 @@ const ALL_PROJECTS = [
     id: 8,
     title: "Liquid Soap Promo Reel",
     category: "Video Editing",
-    description: "Short-form product promotional video with motion graphics and color grading for liquid soap brand.",
+    description:
+      "Short-form product promotional video with motion graphics and color grading for liquid soap brand.",
     image: "/images/video-reel.png",
+    link: null,
+  },
+  {
+    id: 9,
+    title: "Additional Project 1",
+    category: "Graphic Design",
+    description: "Another amazing graphic design project showcase.",
+    image: "/images/placeholder.jpg",
+    link: null,
+  },
+  {
+    id: 10,
+    title: "Additional Project 2",
+    category: "Web Development",
+    description: "Modern web application with cutting-edge features.",
+    image: "/images/placeholder.jpg",
     link: null,
   },
 ];
 
-const FILTERS = ["All", "Graphic Design", "Social Media Management", "Web Development", "Video Editing"];
+const FILTERS = [
+  "All",
+  "Graphic Design",
+  "Social Media",
+  "Web Development",
+  "Video Editing",
+];
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(9);
 
   const filtered = ALL_PROJECTS.filter(
     (p) => activeFilter === "All" || p.category === activeFilter
   );
+
+  const displayedProjects = filtered.slice(0, visibleCount);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -92,6 +125,12 @@ export function Projects() {
     setLightboxIndex((lightboxIndex + 1) % filtered.length);
   };
 
+  const loadMoreProjects = () => {
+    setVisibleCount((prev) => prev + 9);
+  };
+
+  const hasMoreProjects = visibleCount < filtered.length;
+
   return (
     <section
       id="work"
@@ -105,13 +144,14 @@ export function Projects() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* Heading */}
-        <div className="flex flex-col items-center text-center mb-10 md:mb-12">
+        <div className="flex flex-col items-center text-center mb-12">
           <span
             className="font-medium tracking-widest uppercase text-sm mb-4 block"
             style={{ color: "#F5C518" }}
           >
             Portfolio
           </span>
+
           <h2
             className="text-4xl md:text-6xl font-black text-white uppercase"
             style={{ fontFamily: "Outfit, sans-serif" }}
@@ -121,29 +161,22 @@ export function Projects() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-16 md:mb-20">
+        <div className="flex flex-wrap justify-center gap-3 mb-20">
           {FILTERS.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className="px-5 py-2 text-sm md:text-base font-medium transition-all duration-300"
+              className="px-5 py-2 text-sm font-medium transition-all duration-300"
               style={{
-                border: activeFilter === filter ? "1px solid #F5C518" : "1px solid #1f1f1f",
-                backgroundColor: activeFilter === filter ? "rgba(245,197,24,0.1)" : "transparent",
+                border:
+                  activeFilter === filter
+                    ? "1px solid #F5C518"
+                    : "1px solid #1f1f1f",
+                backgroundColor:
+                  activeFilter === filter
+                    ? "rgba(245,197,24,0.1)"
+                    : "transparent",
                 color: activeFilter === filter ? "#F5C518" : "#888",
-                fontFamily: "Outfit, sans-serif",
-              }}
-              onMouseEnter={(e) => {
-                if (activeFilter !== filter) {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#F5C518";
-                  (e.currentTarget as HTMLElement).style.color = "#F5C518";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeFilter !== filter) {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#1f1f1f";
-                  (e.currentTarget as HTMLElement).style.color = "#888";
-                }
               }}
             >
               {filter}
@@ -151,33 +184,23 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered.map((project, index) => (
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {displayedProjects.map((project, index) => (
             <div
               key={project.id}
               style={{
                 backgroundColor: "#111111",
                 border: "1px solid #1f1f1f",
-                transition: "border-color 0.3s ease, transform 0.3s ease",
+                transition: "all 0.3s ease",
               }}
-              onMouseEnter={(e) => {
-                setHoveredId(project.id);
-                e.currentTarget.style.borderColor = "#F5C518";
-                e.currentTarget.style.transform = "translateY(-4px)";
-              }}
-              onMouseLeave={(e) => {
-                setHoveredId(null);
-                e.currentTarget.style.borderColor = "#1f1f1f";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Square Image */}
               <div
                 style={{
                   position: "relative",
                   aspectRatio: "1 / 1",
-                  backgroundColor: "#1a1a1a",
                   overflow: "hidden",
                 }}
               >
@@ -188,28 +211,13 @@ export function Projects() {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    objectPosition: "center",
-                    transform: hoveredId === project.id ? "scale(1.08)" : "scale(1)",
+                    transform:
+                      hoveredId === project.id ? "scale(1.08)" : "scale(1)",
                     transition: "transform 0.7s ease",
-                  }}
-                  onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    target.style.display = "none";
-                    const parent = target.parentElement;
-                    if (parent && !parent.querySelector(".placeholder-label")) {
-                      parent.style.background =
-                        "linear-gradient(135deg, #1a1a1a 0%, #111 50%, #1f1f1f 100%)";
-                      const placeholder = document.createElement("div");
-                      placeholder.className = "placeholder-label";
-                      placeholder.style.cssText =
-                        "position:absolute;inset:0;display:flex;align-items:center;justify-content:center;";
-                      placeholder.innerHTML = `<span style="color:#F5C518;font-family:Outfit,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;">${project.category}</span>`;
-                      parent.appendChild(placeholder);
-                    }
                   }}
                 />
 
-                {/* Hover overlay */}
+                {/* Hover Overlay */}
                 <div
                   style={{
                     position: "absolute",
@@ -218,7 +226,6 @@ export function Projects() {
                     alignItems: "center",
                     justifyContent: "center",
                     backgroundColor: "rgba(10,10,10,0.85)",
-                    backdropFilter: "blur(4px)",
                     opacity: hoveredId === project.id ? 1 : 0,
                     transition: "opacity 0.3s ease",
                   }}
@@ -227,189 +234,75 @@ export function Projects() {
                     <a
                       href={project.link}
                       target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm"
+                      className="flex items-center gap-2 px-6 py-3 font-bold uppercase text-sm"
                       style={{
                         backgroundColor: "#F5C518",
                         color: "#0A0A0A",
                         textDecoration: "none",
-                        transform: hoveredId === project.id ? "translateY(0)" : "translateY(16px)",
-                        transition: "transform 0.3s ease",
                       }}
                     >
-                      View Live <ArrowUpRight className="w-4 h-4" />
+                      View Live <ArrowUpRight size={16} />
                     </a>
                   ) : (
                     <button
                       onClick={() => openLightbox(index)}
-                      className="flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm"
+                      className="flex items-center gap-2 px-6 py-3 font-bold uppercase text-sm"
                       style={{
                         backgroundColor: "#F5C518",
                         color: "#0A0A0A",
-                        transform: hoveredId === project.id ? "translateY(0)" : "translateY(16px)",
-                        transition: "transform 0.3s ease",
-                        cursor: "pointer",
                       }}
                     >
-                      View Project <ArrowUpRight className="w-4 h-4" />
+                      View Project <ArrowUpRight size={16} />
                     </button>
                   )}
                 </div>
               </div>
 
-              {/* Card Info */}
-              <div className="p-6 relative">
-                <div
-                  className="absolute top-0 left-6 w-12 h-1 -translate-y-full"
-                  style={{ backgroundColor: "#F5C518" }}
-                />
+              <div className="p-6">
                 <span
-                  className="text-xs font-bold uppercase tracking-wider mb-2 block"
+                  className="text-xs font-bold uppercase block mb-2"
                   style={{ color: "#F5C518" }}
                 >
                   {project.category}
                 </span>
-                <h3
-                  className="text-xl font-bold text-white mb-2"
-                  style={{ fontFamily: "Outfit, sans-serif" }}
-                >
+
+                <h3 className="text-xl font-bold text-white mb-2">
                   {project.title}
                 </h3>
-                <p className="text-sm line-clamp-2" style={{ color: "#888" }}>
+
+                <p className="text-sm" style={{ color: "#888" }}>
                   {project.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Lightbox Popup */}
-      {lightboxIndex !== null && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 1000,
-            backgroundColor: "rgba(0,0,0,0.95)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-          }}
-          onClick={closeLightbox}
-        >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "20px",
-              backgroundColor: "#F5C518",
-              color: "#0A0A0A",
-              border: "none",
-              borderRadius: "50%",
-              width: "44px",
-              height: "44px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              zIndex: 1001,
-            }}
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          {/* Prev button */}
-          {filtered.length > 1 && (
+        {/* SEE MORE BUTTON */}
+        {hasMoreProjects && (
+          <div className="flex justify-center">
             <button
-              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              onClick={loadMoreProjects}
+              className="px-8 py-4 font-bold uppercase tracking-wider transition-all duration-300"
               style={{
-                position: "absolute",
-                left: "20px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                backgroundColor: "rgba(245,197,24,0.9)",
+                backgroundColor: "#F5C518",
                 color: "#0A0A0A",
-                border: "none",
-                borderRadius: "50%",
-                width: "48px",
-                height: "48px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                zIndex: 1001,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow =
+                  "0 12px 30px rgba(245,197,24,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <ChevronLeft className="w-6 h-6" />
+              See More
             </button>
-          )}
-
-          {/* Image */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: "90vw",
-              maxHeight: "85vh",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-            }}
-          >
-            <img
-              src={filtered[lightboxIndex].image}
-              alt={filtered[lightboxIndex].title}
-              style={{
-                maxWidth: "100%",
-                maxHeight: "75vh",
-                objectFit: "contain",
-                boxShadow: "0 25px 60px rgba(0,0,0,0.8)",
-              }}
-            />
-            <div className="text-center">
-              <p
-                className="text-white font-bold text-xl"
-                style={{ fontFamily: "Outfit, sans-serif" }}
-              >
-                {filtered[lightboxIndex].title}
-              </p>
-              <p className="text-sm mt-1" style={{ color: "#888" }}>
-                {filtered[lightboxIndex].description}
-              </p>
-            </div>
           </div>
-
-          {/* Next button */}
-          {filtered.length > 1 && (
-            <button
-              onClick={(e) => { e.stopPropagation(); nextImage(); }}
-              style={{
-                position: "absolute",
-                right: "20px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                backgroundColor: "rgba(245,197,24,0.9)",
-                color: "#0A0A0A",
-                border: "none",
-                borderRadius: "50%",
-                width: "48px",
-                height: "48px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                zIndex: 1001,
-              }}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          )}
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }
