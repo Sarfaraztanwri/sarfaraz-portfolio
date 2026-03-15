@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const roles = ["Graphic Designer", "Web Developer", "Creative Thinker","Social Media Manager"];
+const roles = ["Graphic Designer", "Web Developer", "Creative Thinker", "Social Media Manager"];
 
 export function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -35,13 +35,13 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, -50, 0], rotate: [0, 90, 0], opacity: [0.03, 0.08, 0.03] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] max-w-500px max-h-500px rounded-full"
+          className="absolute top-[20%] right-[10%] w-[40vw] h-[40vw] rounded-full"
           style={{ border: "1px solid rgba(245,197,24,0.2)", background: "rgba(245,197,24,0.02)", filter: "blur(60px)" }}
         />
         <motion.div
           animate={{ y: [0, 50, 0], rotate: [0, -90, 0], opacity: [0.02, 0.06, 0.02] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[10%] left-[5%] w-[30vw] h-[30vw] max-w-400px max-h-400px rounded-full"
+          className="absolute bottom-[10%] left-[5%] w-[30vw] h-[30vw] rounded-full"
           style={{ background: "rgba(245,197,24,0.03)", filter: "blur(60px)" }}
         />
       </div>
@@ -60,7 +60,7 @@ export function Hero() {
               className="font-medium mb-4 text-lg md:text-xl flex items-center gap-3"
               style={{ color: "#888" }}
             >
-              <span className="w-12 h-1px block" style={{ backgroundColor: "#F5C518" }}></span>
+              <span className="w-12 block" style={{ height: "1px", backgroundColor: "#F5C518" }}></span>
               Hello, I'm
             </motion.p>
 
@@ -105,13 +105,13 @@ export function Hero() {
               Karachi, Pakistan
             </motion.p>
 
-            {/* ✅ Mobile Only Image — ALAG div, buttons ke bahar */}
+            {/* Mobile Only Image */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
               className="flex lg:hidden relative items-end justify-center w-full mt-6"
-              style={{ height: "260px" }}
+              style={{ height: "200px" }}
             >
               <motion.div
                 animate={{ y: [0, -8, 0] }}
@@ -121,8 +121,8 @@ export function Hero() {
                 <div
                   className="absolute rounded-full"
                   style={{
-                    width: "190px",
-                    height: "190px",
+                    width: "170px",
+                    height: "170px",
                     backgroundColor: "#F5C518",
                     bottom: "0",
                     left: "50%",
@@ -138,37 +138,37 @@ export function Hero() {
                   className="absolute"
                   style={{
                     zIndex: 2,
-                    width: "225px",
-                    height: "260px",
+                    width: "200px",
+                    height: "230px",
                     bottom: "0",
                     left: "50%",
                     transform: "translateX(-50%)",
                     objectFit: "contain",
                     objectPosition: "top center",
-                    clipPath: "path('M 0 0 L 225 0 L 225 178 A 112 112 0 0 1 0 178 Z')",
+                    clipPath: "path('M 0 0 L 200 0 L 200 158 A 100 100 0 0 1 0 158 Z')",
                     filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.5))",
                   }}
                 />
               </motion.div>
             </motion.div>
 
-            {/* ✅ Buttons — image ke baad, ALAG div */}
+            {/* Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.9 }}
-              className="mt-8 flex flex-wrap gap-4 relative z-10"
+              className="mt-10 flex flex-col sm:flex-row gap-4 relative z-10"
             >
               <button
                 onClick={() => scrollTo("#work")}
-                className="px-8 py-4 font-bold transition-all duration-300 hover:-translate-y-1"
+                className="w-full sm:w-auto px-8 py-4 font-bold transition-all duration-300 hover:-translate-y-1"
                 style={{ backgroundColor: "#F5C518", color: "#0A0A0A" }}
               >
                 View My Work
               </button>
               <button
                 onClick={() => scrollTo("#contact")}
-                className="px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1"
+                className="w-full sm:w-auto px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1"
                 style={{ border: "2px solid #1f1f1f" }}
                 onMouseEnter={(e) => {
                   (e.target as HTMLElement).style.borderColor = "#F5C518";
@@ -185,7 +185,7 @@ export function Hero() {
 
           </div>
 
-          {/* ✅ Right - Profile Image — Desktop Only */}
+          {/* Right - Profile Image Desktop Only */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
@@ -235,37 +235,22 @@ export function Hero() {
         </div>
       </div>
 
-      {/* ✅ Scroll indicator — Desktop */}
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 1.5, duration: 1 }}
-  className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
->
-  <span className="text-xs uppercase tracking-widest" style={{ color: "#888" }}>Scroll</span>
-  <motion.div
-    animate={{ y: [0, 8, 0] }}
-    transition={{ repeat: Infinity, duration: 1.5 }}
-    className="w-1px h-12"
-    style={{ background: "linear-gradient(to bottom, #F5C518, transparent)" }}
-  />
-</motion.div>
+      {/* Scroll indicator Desktop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4"
+      >
+        <span className="text-xs uppercase tracking-widest" style={{ color: "#888" }}>Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          style={{ width: "1px", height: "48px", background: "linear-gradient(to bottom, #F5C518, transparent)" }}
+        />
+      </motion.div>
 
-{/* ✅ Scroll indicator — Mobile Only */}
-<motion.div
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 1.5, duration: 1 }}
-  className="absolute bottom-0 left-1/2 -translate-x-1/2 flex lg:hidden flex-col items-center gap-1"
->
-  <span className="text-[10px] uppercase tracking-widest" style={{ color: "#888" }}>Scroll</span>
-  <motion.div
-    animate={{ y: [0, 6, 0] }}
-    transition={{ repeat: Infinity, duration: 1.5 }}
-    className="w-1px h-8"
-    style={{ background: "linear-gradient(to bottom, #F5C518, transparent)" }}
-  />
-</motion.div>
+      
     </section>
   );
 }
