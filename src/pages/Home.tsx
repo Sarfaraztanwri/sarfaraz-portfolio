@@ -10,6 +10,144 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
 
+function Testimonials() {
+
+  const testimonials = [
+    {
+      name: "Ali Khan",
+      role: "Business Owner",
+      text: "Sarfaraz delivered amazing graphic design work. Highly professional."
+    },
+    {
+      name: "Sarah Ahmed",
+      role: "Marketing Manager",
+      text: "Very creative designer with great communication."
+    },
+    {
+      name: "John Smith",
+      role: "Startup Founder",
+      text: "Outstanding work and fast delivery."
+    },
+    {
+      name: "Hamza Malik",
+      role: "Entrepreneur",
+      text: "Highly recommended designer."
+    }
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 2) % testimonials.length);
+    }, 8000);
+
+    return () => clearInterval(timer);
+
+  }, []);
+
+  const visibleTestimonials = [
+    testimonials[index],
+    testimonials[(index + 1) % testimonials.length]
+  ];
+
+  return (
+
+    <section
+      style={{
+        padding: "140px 20px",
+        background: "rgba(255,255,255,0.02)",
+        borderTop: "1px solid #1f1f1f"
+      }}
+    >
+
+      <div style={{ maxWidth: "1200px", margin: "auto", textAlign: "center" }}>
+
+        <span style={{
+          color: "#F5C518",
+          letterSpacing: "4px",
+          fontSize: "12px"
+        }}>
+          CLIENTS
+        </span>
+
+        <h2 style={{
+          color: "white",
+          fontSize: "48px",
+          fontWeight: "900",
+          letterSpacing: "3px",
+          marginTop: "10px"
+        }}>
+          TESTIMONIALS
+        </h2>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "60px",
+            marginTop: "70px"
+          }}
+        >
+
+          {visibleTestimonials.map((item, i) => (
+
+            <motion.div
+              key={index + i}
+              initial={{ x: i === 0 ? -300 : 300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1.6 }}
+              
+              style={{
+                width: "420px",
+                padding: "35px",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "12px",
+                backdropFilter: "blur(10px)"
+              }}
+            >
+
+              <div style={{ color: "#F5C518", marginBottom: "12px", fontSize: "18px" }}>
+                ★★★★★
+              </div>
+
+              <p style={{
+                color: "#888",
+                fontSize: "15px",
+                lineHeight: "1.6"
+              }}>
+                {item.text}
+              </p>
+
+              <h4 style={{
+                color: "#F5C518",
+                marginTop: "18px"
+              }}>
+                {item.name}
+              </h4>
+
+              <span style={{
+                color: "#666",
+                fontSize: "12px"
+              }}>
+                {item.role}
+              </span>
+
+            </motion.div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+
+  );
+}
+
 export default function Home() {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -162,6 +300,8 @@ export default function Home() {
               <Skills />
               <ToolsMarquee />
               <Projects />
+              <Testimonials />
+
               <Contact />
             </main>
             <Footer />
