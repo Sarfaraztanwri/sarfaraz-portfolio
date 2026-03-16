@@ -92,7 +92,7 @@ export function Navbar() {
           {/* Right Icons */}
           <div className="hidden md:flex justify-end items-center gap-4">
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/sarfaraztanwri/"
               target="_blank"
               className="text-[#888] hover:text-[#F5C518] transition-transform hover:scale-110"
             >
@@ -108,7 +108,7 @@ export function Navbar() {
             </a>
 
             <a
-              href="mailto:youremail@gmail.com"
+              href="sarfaraztanwari06@gmail.com"
               className="text-[#888] hover:text-[#F5C518] transition-transform hover:scale-110"
             >
               <Mail size={18} />
