@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import TechnicalSkills from "@/components/TechnicalSkills";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
@@ -160,6 +161,7 @@ export default function Home() {
             <main>
               <Hero />
               <About />
+              <TechnicalSkills />
               <Skills />
               <ToolsMarquee />
               <Process />
