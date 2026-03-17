@@ -1,7 +1,7 @@
 import { FadeIn } from "../FadeIn";
 import { Palette, Code2, Film, Globe } from "lucide-react";
 
-const skills = [
+const services = [
   {
     icon: Palette,
     title: "Graphic Design",
@@ -24,7 +24,7 @@ const skills = [
   },
 ];
 
-export function Skills() {
+export default function Services() {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -47,23 +47,21 @@ export function Skills() {
   };
 
   return (
-    <section id="skills" className="py-24 md:py-32">
+    <section id="services" className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <FadeIn className="mb-16 md:mb-24 flex flex-col items-center text-center">
-          <span className="font-medium tracking-widest uppercase text-sm mb-4 block" style={{ color: "#F5C518" }}>
-            Expertise
+          <span className="font-medium tracking-widest uppercase text-sm mb-4 block text-[#F5C518]">
+            Services
           </span>
-          <h2
-            className="text-4xl md:text-6xl font-black text-white uppercase"
-            style={{ fontFamily: "Outfit, sans-serif" }}
-          >
+
+          <h2 className="text-4xl md:text-6xl font-black text-white uppercase">
             What I Do
           </h2>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
+          {services.map((service, index) => {
+            const Icon = service.icon;
             return (
               <FadeIn key={index} delay={index * 0.1} direction="up">
                 <div
@@ -77,34 +75,22 @@ export function Skills() {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  {/* Top yellow line */}
-                  <div
-                    className="absolute top-0 left-0 w-full h-1 group-hover:bg-[#F5C518] transition-colors duration-300"
-                    style={{ backgroundColor: "#1f1f1f" }}
-                  />
+                  <div className="absolute top-0 left-0 w-full h-1 bg-[#1f1f1f] group-hover:bg-[#F5C518] transition" />
 
-                  <div
-                    className="w-14 h-14 flex items-center justify-center mb-6"
-                    style={{ backgroundColor: "#0A0A0A", border: "1px solid #1f1f1f" }}
-                  >
+                  <div className="w-14 h-14 flex items-center justify-center mb-6 bg-[#0A0A0A] border border-[#1f1f1f]">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
 
-                  <h3
-                    className="text-2xl font-bold text-white mb-6"
-                    style={{ fontFamily: "Outfit, sans-serif" }}
-                  >
-                    {skill.title}
+                  <h3 className="text-2xl font-bold text-white mb-6">
+                    {service.title}
                   </h3>
 
                   <div className="flex flex-wrap gap-y-3">
-                    {skill.tags.map((tag, i) => (
+                    {service.tags.map((tag, i) => (
                       <span key={i} className="flex items-center">
-                        <span className="text-sm font-medium" style={{ color: "#888888" }}>
-                          {tag}
-                        </span>
-                        {i < skill.tags.length - 1 && (
-                          <span className="mx-3 text-xs" style={{ color: "#888888" }}>|</span>
+                        <span className="text-sm text-[#888]">{tag}</span>
+                        {i < service.tags.length - 1 && (
+                          <span className="mx-3 text-xs text-[#888]">|</span>
                         )}
                       </span>
                     ))}

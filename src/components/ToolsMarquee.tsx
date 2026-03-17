@@ -7,8 +7,6 @@ const logos = [
   { name: "Fiverr", src: "https://cdn.simpleicons.org/fiverr/ffffff" },
   { name: "Google", src: "https://cdn.simpleicons.org/google/ffffff" },
   { name: "Apple", src: "https://cdn.simpleicons.org/apple/ffffff" },
-  { name: "Amazon", src: "https://cdn.simpleicons.org/amazon/ffffff" },
-  { name: "Microsoft", src: "https://cdn.simpleicons.org/microsoft/ffffff" },
 ];
 
 export default function ToolsMarquee() {
@@ -183,7 +181,7 @@ export default function ToolsMarquee() {
           className="uppercase tracking-[8px] text-sm"
           style={{ color: "#F5C518", fontFamily: "Outfit, sans-serif" }}
         >
-          Clients
+          Worked With
         </h3>
       </div>
 
