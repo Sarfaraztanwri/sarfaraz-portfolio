@@ -185,8 +185,8 @@ export default function TechnicalSkills() {
                             viewport={{ once: true }}
                             className={`h-full rounded-full ${
                               isTop
-                                ? "bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-[0_0_15px_rgba(255,200,0,0.6)]"
-                                : "bg-gradient-to-r from-yellow-400/70 to-yellow-500/70"
+                                ? "bg-linear-to-r from-yellow-300 to-yellow-500 shadow-[0_0_15px_rgba(255,200,0,0.6)]"
+                                : "bg-linear-to-r from-yellow-400/70 to-yellow-500/70"
                             }`}
                           />
                         </div>
