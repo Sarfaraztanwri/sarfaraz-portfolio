@@ -191,7 +191,7 @@ export function Hero() {
                   (e.target as HTMLElement).style.color = "#ffffff";
                 }}
               >
-                Contact Me
+                Hire Me
               </button>
             </motion.div>
 
