@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Process() {
   const steps = [
     { number: "01", title: "Research", desc: "Understanding client goals" },
@@ -12,18 +10,17 @@ export default function Process() {
     <section className="bg-black py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
 
-        {/* Heading */}
         <p className="text-[#F5C518] text-sm tracking-widest mb-2">
           PROCESS
         </p>
+
         <h2 className="text-white text-3xl md:text-4xl font-bold mb-16">
           MY WORK PROCESS
         </h2>
 
-        {/* Line + Steps */}
         <div className="relative">
 
-          {/* Horizontal Line */}
+          {/* Line */}
           <div className="hidden md:block absolute top-6 left-0 w-full h-2px bg-[#333]"></div>
 
           {/* Steps */}
@@ -42,7 +39,7 @@ export default function Process() {
                   {step.title}
                 </h3>
 
-                {/* Description */}
+                {/* Desc */}
                 <p className="text-gray-400 text-sm mt-2 text-center">
                   {step.desc}
                 </p>
