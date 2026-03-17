@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 
@@ -83,6 +81,9 @@ export default function Projects() {
   const [activeClient, setActiveClient] = useState<Client | null>(null);
   const [visibleProjects, setVisibleProjects] = useState(2);
   const slider = useRef<HTMLDivElement>(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftVal = useRef(0);
 
   useEffect(() => {
     gsap.fromTo(
@@ -92,53 +93,48 @@ export default function Projects() {
     );
   }, [activeClient]);
 
-  const handleWheel = (e: any) => {
+  const handleWheel = (e: React.WheelEvent) => {
     if (!slider.current) return;
     e.preventDefault();
     slider.current.scrollLeft += e.deltaY;
   };
 
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
-
-  const handleMouseDown = (e: any) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     if (!slider.current) return;
-    isDown = true;
-    startX = e.pageX - slider.current.offsetLeft;
-    scrollLeft = slider.current.scrollLeft;
+    isDown.current = true;
+    startX.current = e.pageX - slider.current.offsetLeft;
+    scrollLeftVal.current = slider.current.scrollLeft;
   };
 
-  const handleMouseUp = () => (isDown = false);
-  const handleMouseLeave = () => (isDown = false);
+  const handleMouseUp = () => {
+    isDown.current = false;
+  };
 
-  const handleMouseMove = (e: any) => {
-    if (!isDown || !slider.current) return;
+  const handleMouseLeave = () => {
+    isDown.current = false;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown.current || !slider.current) return;
     e.preventDefault();
     const x = e.pageX - slider.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    slider.current.scrollLeft = scrollLeft - walk;
+    const walk = (x - startX.current) * 2;
+    slider.current.scrollLeft = scrollLeftVal.current - walk;
   };
 
-  const magnetic = (e: any) => {
-    const el = e.currentTarget;
+  const magnetic = (e: React.MouseEvent) => {
+    const el = e.currentTarget as HTMLElement;
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-
-    gsap.to(el, {
-      x: x * 0.3,
-      y: y * 0.3,
-      duration: 0.3,
-    });
+    gsap.to(el, { x: x * 0.3, y: y * 0.3, duration: 0.3 });
   };
 
-  const resetMagnetic = (e: any) => {
+  const resetMagnetic = (e: React.MouseEvent) => {
     gsap.to(e.currentTarget, { x: 0, y: 0, duration: 0.4 });
   };
 
-  /* GRID PAGE */
-
+  /* ── GRID PAGE ── */
   if (!activeClient) {
     return (
       <section
@@ -149,10 +145,15 @@ export default function Projects() {
         }}
       >
         <div style={{ textAlign: "center", marginBottom: "80px" }}>
-          <span style={{ color: "#F5C518", letterSpacing: "3px", fontSize: "12px" }}>
+          <span
+            style={{
+              color: "#F5C518",
+              letterSpacing: "3px",
+              fontSize: "12px",
+            }}
+          >
             PORTFOLIO
           </span>
-
           <h2
             style={{
               fontSize: "56px",
@@ -189,6 +190,7 @@ export default function Projects() {
               <div style={{ overflow: "hidden", borderRadius: "20px" }}>
                 <img
                   src={client.thumbnail}
+                  alt={client.name}
                   style={{
                     width: "100%",
                     height: "420px",
@@ -197,7 +199,6 @@ export default function Projects() {
                   }}
                 />
               </div>
-
               <div style={{ marginTop: "20px", color: "white" }}>
                 <p
                   style={{
@@ -208,7 +209,6 @@ export default function Projects() {
                 >
                   {client.type}
                 </p>
-
                 <h3
                   style={{
                     fontSize: "32px",
@@ -246,8 +246,7 @@ export default function Projects() {
     );
   }
 
-  /* PROJECT PAGE */
-
+  /* ── PROJECT DETAIL PAGE ── */
   return (
     <section
       className="project-page"
@@ -271,100 +270,40 @@ export default function Projects() {
           color: "#F5C518",
           marginBottom: "40px",
           cursor: "pointer",
+          fontSize: "16px",
         }}
       >
         ← BACK
       </button>
-<div
-  ref={slider}
-  onWheel={handleWheel}
-  onMouseDown={handleMouseDown}
-  onMouseUp={handleMouseUp}
-  onMouseLeave={handleMouseLeave}
-  onMouseMove={handleMouseMove}
-  style={{
-    display: "flex",
-    gap: "60px",
-    overflowX: "scroll",
-    scrollbarWidth: "none",
-    cursor: "grab",
-  }}
->
 
-  {/* TEXT CARD */}
-
-  <div
-    style={{
-      minWidth: "500px",
-      color: "white",
-    }}
-  >
-    <p style={{ color: "#888", fontSize: "12px" }}>
-      {activeClient.type} — 2024
-    </p>
-
-    <h1
-      style={{
-        fontSize: "64px",
-        fontWeight: "900",
-      }}
-    >
-      {activeClient.name}
-    </h1>
-
-    <p style={{ color: "#aaa", marginTop: "20px" }}>
-      {activeClient.description}
-    </p>
-
-    <h4 style={{ marginTop: "40px", color: "#F5C518" }}>SERVICES</h4>
-
-    {activeClient.services.map((s, i) => (
-      <p key={i} style={{ color: "#ccc" }}>
-        • {s}
-      </p>
-    ))}
-  </div>
-
-  {/* IMAGE CARDS */}
-
-  {activeClient.works.map((work) => (
-    <div
-      key={work.id}
-      style={{
-        minWidth: "700px",
-        position: "relative",
-      }}
-    >
-      <img
-        src={work.image}
+      {/* Horizontal scroll carousel — NO scrollbar */}
+      <div
+        ref={slider}
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
+        className="no-scrollbar"
         style={{
-          width: "100%",
-          height: "450px",
-          objectFit: "cover",
-          borderRadius: "20px",
+          display: "flex",
+          gap: "60px",
+          overflowX: "auto",
+          cursor: "grab",
         }}
-      />
-
-      <p style={{ color: "#F5C518", marginTop: "10px" }}>
-        {work.type}
-      </p>
-    </div>
-  ))}
-        <div>
+      >
+        {/* TEXT CARD */}
+        <div style={{ minWidth: "500px", color: "white", flexShrink: 0 }}>
           <p style={{ color: "#888", fontSize: "12px" }}>
             {activeClient.type} — 2024
           </p>
-
-          <h1 style={{ fontSize: "64px", fontWeight: "900", color: "white" }}>
+          <h1 style={{ fontSize: "64px", fontWeight: "900" }}>
             {activeClient.name}
           </h1>
-
           <p style={{ color: "#aaa", marginTop: "20px" }}>
             {activeClient.description}
           </p>
-
           <h4 style={{ marginTop: "40px", color: "#F5C518" }}>SERVICES</h4>
-
           {activeClient.services.map((s, i) => (
             <p key={i} style={{ color: "#ccc" }}>
               • {s}
@@ -372,37 +311,25 @@ export default function Projects() {
           ))}
         </div>
 
-        <div
-          ref={slider}
-          onWheel={handleWheel}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
-          onMouseMove={handleMouseMove}
-          style={{
-            display: "flex",
-            gap: "40px",
-            overflowX: "scroll",
-            scrollbarWidth: "none",
-            cursor: "grab",
-          }}
-        >
-          {activeClient.works.map((work) => (
-            <div key={work.id} style={{ minWidth: "700px" }}>
-              <img
-                src={work.image}
-                style={{
-                  width: "100%",
-                  height: "450px",
-                  objectFit: "cover",
-                  borderRadius: "20px",
-                }}
-              />
-
-              <p style={{ color: "#F5C518", marginTop: "10px" }}>{work.type}</p>
-            </div>
-          ))}
-        </div>
+        {/* IMAGE CARDS */}
+        {activeClient.works.map((work) => (
+          <div
+            key={work.id}
+            style={{ minWidth: "700px", position: "relative", flexShrink: 0 }}
+          >
+            <img
+              src={work.image}
+              alt={work.type}
+              style={{
+                width: "100%",
+                height: "450px",
+                objectFit: "cover",
+                borderRadius: "20px",
+              }}
+            />
+            <p style={{ color: "#F5C518", marginTop: "10px" }}>{work.type}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

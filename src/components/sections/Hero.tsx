@@ -153,6 +153,18 @@ export function Hero() {
             </motion.div>
 
             {/* Buttons */}
+            {/* Hello I'm */}
+            <motion.p
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, delay: 0.5 }}
+  className="font-medium mt-8 mb-4 text-lg md:text-xl flex items-center gap-3"
+  style={{ color: "#888" }}
+>
+  <span className="w-12 block" style={{ height: "1px", backgroundColor: "#F5C518" }}></span>
+  🟡 Available For Freelance Projects
+</motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
