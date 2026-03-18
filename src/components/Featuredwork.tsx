@@ -57,26 +57,24 @@ export default function FeaturedWork() {
           onMouseLeave={() => setIsPaused(false)}
         >
 
-          {/* 🔥 LEFT ARROW (GLASS + GLOW) */}
+          {/* LEFT ARROW */}
           <button
             onClick={prev}
             className="absolute -left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full 
             bg-white/10 backdrop-blur-md border border-white/20
             text-white text-xl flex items-center justify-center
-            
             hover:bg-yellow-400 hover:text-black hover:scale-110
             transition duration-300"
           >
             {"<"}
           </button>
 
-          {/* 🔥 RIGHT ARROW */}
+          {/* RIGHT ARROW */}
           <button
             onClick={next}
             className="absolute -right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full 
             bg-white/10 backdrop-blur-md border border-white/20
             text-white text-xl flex items-center justify-center
-            
             hover:bg-yellow-400 hover:text-black hover:scale-110
             transition duration-300"
           >
