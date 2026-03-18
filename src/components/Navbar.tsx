@@ -45,7 +45,8 @@ export function Navbar() {
           padding: isScrolled ? "14px 0" : "24px 0",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-3 items-center">
+
+<div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
           {/* Logo Left */}
           <div className="flex justify-start">
