@@ -126,7 +126,6 @@ export default function App() {
     <>
       <FloatingContactButton />
       <Home />
-      
     </>
   );
 }
