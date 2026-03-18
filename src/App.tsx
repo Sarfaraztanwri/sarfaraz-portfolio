@@ -1,3 +1,4 @@
+import { SpeedInsights } from "node_modules/@vercel/speed-insights/dist/nuxt/runtime";
 import Home from "./pages/Home";
 import { useEffect, useState, useRef } from "react";
 
@@ -126,6 +127,7 @@ export default function App() {
     <>
       <FloatingContactButton />
       <Home />
+      <SpeedInsights />
     </>
   );
 }
