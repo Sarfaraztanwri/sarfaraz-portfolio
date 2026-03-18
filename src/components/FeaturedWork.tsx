@@ -13,12 +13,21 @@ const projects = [
 ];
 
 export default function FeaturedWork() {
-  const visibleCards = 4;
-
+  const [visibleCards, setVisibleCards] = useState(4);
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto Slide
+  // ✅ Responsive
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCards(window.innerWidth < 768 ? 2 : 4);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // ✅ Auto slide
   useEffect(() => {
     if (isPaused) return;
 
@@ -27,7 +36,7 @@ export default function FeaturedWork() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [index, isPaused]);
+  }, [index, isPaused, visibleCards]);
 
   const next = () => {
     if (index + visibleCards >= projects.length) {
@@ -49,7 +58,6 @@ export default function FeaturedWork() {
     <section className="w-full py-20 bg-black text-white">
       <div className="max-w-[1200px] mx-auto px-4">
 
-        {/* Heading */}
         <h2 className="text-4xl font-bold mb-2">
           Featured <span className="text-yellow-400">Work</span>
         </h2>
@@ -57,56 +65,59 @@ export default function FeaturedWork() {
           A glimpse of my recent design work
         </p>
 
-        {/* Slider */}
         <div
           className="relative"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
 
-          {/* Left Arrow */}
+          {/* Arrows */}
           <button
             onClick={prev}
-            className="absolute -left-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
-            bg-white/10 border border-white/20 text-white flex items-center justify-center
+            className="absolute -left-6 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
+            bg-white/10 border border-white/20 flex items-center justify-center
             hover:bg-yellow-400 hover:text-black transition"
           >
             {"<"}
           </button>
 
-          {/* Right Arrow */}
           <button
             onClick={next}
-            className="absolute -right-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
-            bg-white/10 border border-white/20 text-white flex items-center justify-center
+            className="absolute -right-6 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
+            bg-white/10 border border-white/20 flex items-center justify-center
             hover:bg-yellow-400 hover:text-black transition"
           >
             {">"}
           </button>
 
-          {/* Cards */}
+          {/* Slider */}
           <div className="overflow-hidden">
             <motion.div
-              className="flex gap-6"
-              animate={{ x: `-${(index / visibleCards) * 100}%` }}
-              transition={{ duration: 0.5 }}
+              className="flex gap-3 md:gap-6"
+              animate={{
+                x:
+                  visibleCards === 4
+                    ? `-${index * (100 / 4)}%`
+                    : `-${index * (100 / 2)}%`,
+              }}
+              transition={{ duration: 0.6 }}
             >
               {projects.map((project, i) => (
                 <div
                   key={i}
-                  className="min-w-[calc(25%-18px)] bg-gray-900 rounded-2xl overflow-hidden group"
+                  className="min-w-[calc((100%-12px)/2)] md:min-w-[calc((100%-72px)/4)] bg-gray-900 rounded-xl md:rounded-2xl overflow-hidden"
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-[250px] object-cover group-hover:scale-105 transition duration-300"
+                    className="w-full h-[160px] md:h-[250px] object-cover"
                   />
 
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold">
+                  <div className="p-3 md:p-4">
+                    <h3 className="text-sm md:text-lg font-semibold">
                       Card {project.title}
                     </h3>
-                    <p className="text-sm text-yellow-400">
+                    <p className="text-xs md:text-sm text-yellow-400">
                       {project.category}
                     </p>
                   </div>
@@ -114,6 +125,7 @@ export default function FeaturedWork() {
               ))}
             </motion.div>
           </div>
+
         </div>
 
       </div>

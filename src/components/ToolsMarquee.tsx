@@ -198,7 +198,7 @@ export default function ToolsMarquee() {
       {/* Carousel */}
       <div
         ref={sliderRef}
-        className="flex gap-16 px-32 cursor-grab"
+        className="flex gap-16 px-8 md:px-32 cursor-grab"
         style={{
           overflowX: "hidden",
           scrollbarWidth: "none",

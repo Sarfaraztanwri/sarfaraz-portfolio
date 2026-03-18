@@ -171,7 +171,7 @@ export default function Projects() {
             maxWidth: "1200px",
             margin: "auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(400px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
             gap: "40px",
           }}
         >
@@ -293,7 +293,16 @@ export default function Projects() {
         }}
       >
         {/* TEXT CARD */}
-        <div style={{ minWidth: "500px", color: "white", flexShrink: 0 }}>
+        // TEXT CARD
+<div
+  style={{
+    minWidth: "280px",     // ✅ mobile ke liye chhota
+    maxWidth: "480px",     // ✅ desktop pe limit
+    width: "80vw",         // ✅ viewport ka 80%
+    color: "white",
+    flexShrink: 0,
+  }}
+>
           <p style={{ color: "#888", fontSize: "12px" }}>
             {activeClient.type} — 2024
           </p>
@@ -314,9 +323,15 @@ export default function Projects() {
         {/* IMAGE CARDS */}
         {activeClient.works.map((work) => (
           <div
-            key={work.id}
-            style={{ minWidth: "700px", position: "relative", flexShrink: 0 }}
-          >
+  key={work.id}
+  style={{
+    minWidth: "280px",
+    maxWidth: "640px",
+    width: "80vw",         // ✅ mobile + desktop both
+    position: "relative",
+    flexShrink: 0,
+  }}
+>
             <img
               src={work.image}
               alt={work.type}

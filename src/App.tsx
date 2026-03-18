@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
 import { useEffect, useState, useRef } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 function FloatingContactButton() {
   const [visible, setVisible] = useState(false);
@@ -10,6 +11,9 @@ function FloatingContactButton() {
   const vyRef = useRef(0);
   const floatBaseRef = useRef(0);
   const floatTimeRef = useRef(0);
+
+  // WhatsApp number - change this to your number
+  const whatsappNumber = "1234567890"; // Replace with your WhatsApp number
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,44 +83,49 @@ function FloatingContactButton() {
     animRef.current = requestAnimationFrame(loop);
   };
 
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  const openWhatsApp = () => {
+    // Open WhatsApp with pre-filled message
+    const message = "Hello! I would like to contact you.";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   if (!visible) return null;
 
   return (
     <button
-      onClick={() => scrollTo("#contact")}
+      onClick={openWhatsApp}
       style={{
         position: "fixed",
         right: "30px",
         top: `${btnY}px`,
         zIndex: 999,
-        backgroundColor: "#F5C518",
-        color: "#0A0A0A",
-        padding: "12px 24px",
-        fontWeight: "bold",
-        fontSize: "13px",
-        fontFamily: "Outfit, sans-serif",
+        backgroundColor: "#25D366",
+        color: "#FFFFFF",
+        padding: "16px",
         border: "none",
         cursor: "pointer",
-        textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        boxShadow: "0 4px 20px rgba(245,197,24,0.35)",
+        borderRadius: "50%",
+        boxShadow: "0 4px 20px rgba(37, 211, 102, 0.45)",
         userSelect: "none",
-        whiteSpace: "nowrap",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "60px",
+        height: "60px",
+        transition: "transform 0.2s ease, background-color 0.2s ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.backgroundColor = "#e6b800";
-        (e.currentTarget as HTMLElement).style.transform = "scale(1.05)";
+        (e.currentTarget as HTMLElement).style.backgroundColor = "#20BD5A";
+        (e.currentTarget as HTMLElement).style.transform = "scale(1.1)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.backgroundColor = "#F5C518";
+        (e.currentTarget as HTMLElement).style.backgroundColor = "#25D366";
         (e.currentTarget as HTMLElement).style.transform = "scale(1)";
       }}
+      aria-label="Contact on WhatsApp"
     >
-      Contact Me ↓
+      <FaWhatsapp size={32} />
     </button>
   );
 }

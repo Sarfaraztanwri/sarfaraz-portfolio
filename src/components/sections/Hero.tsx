@@ -203,7 +203,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
             className="hidden lg:flex relative items-end justify-center shrink-0"
-            style={{ width: "500px", height: "620px", marginRight: "-30px" }}
+            style={{ width: "500px", height: "620px" }}
           >
             <motion.div
               animate={{ y: [0, -8, 0] }}
