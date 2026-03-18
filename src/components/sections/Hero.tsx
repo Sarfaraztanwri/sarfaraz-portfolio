@@ -155,15 +155,15 @@ export function Hero() {
             {/* Buttons */}
             {/* Hello I'm */}
             <motion.p
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, delay: 0.5 }}
-  className="font-medium mt-8 mb-4 text-lg md:text-xl flex items-center gap-3"
-  style={{ color: "#888" }}
->
-  <span className="w-12 block" style={{ height: "1px", backgroundColor: "#F5C518" }}></span>
-  🟡 Available For Freelance Projects
-</motion.p>
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="font-medium mt-8 mb-4 text-lg md:text-xl flex items-center gap-3"
+              style={{ color: "#888" }}
+            >
+              <span className="w-12 block" style={{ height: "1px", backgroundColor: "#F5C518" }}></span>
+              🟡 Available For Freelance Projects
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -172,7 +172,12 @@ export function Hero() {
               className="mt-10 flex flex-col sm:flex-row gap-4 relative z-10"
             >
               <button
-                onClick={() => scrollTo("#projects")}
+                onClick={() => {
+                  const section = document.querySelector("#projects");
+                  if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
                 className="w-full sm:w-auto px-8 py-4 font-bold transition-all duration-300 hover:-translate-y-1"
                 style={{ backgroundColor: "#F5C518", color: "#0A0A0A" }}
               >
