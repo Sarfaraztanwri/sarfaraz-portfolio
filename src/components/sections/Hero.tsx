@@ -172,7 +172,7 @@ export function Hero() {
               className="mt-10 flex flex-col sm:flex-row gap-4 relative z-10"
             >
               <button
-                onClick={() => scrollTo("#work")}
+                onClick={() => scrollTo("#projects")}
                 className="w-full sm:w-auto px-8 py-4 font-bold transition-all duration-300 hover:-translate-y-1"
                 style={{ backgroundColor: "#F5C518", color: "#0A0A0A" }}
               >
