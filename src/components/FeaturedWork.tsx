@@ -12,6 +12,7 @@ const projects = [
   { title: "8", category: "Design", image: "https://via.placeholder.com/400" },
 ];
 
+
 export default function FeaturedWork() {
   const visibleCards = 4;
   const totalSlides = Math.ceil(projects.length / visibleCards);
@@ -40,7 +41,7 @@ export default function FeaturedWork() {
 
   return (
     <section className="w-full py-20 bg-black text-white">
-      <div className="max-w-1200px mx-auto px-4">
+      <div className="max-w-[1200px] mx-auto px-4">
 
         {/* Heading */}
         <h2 className="text-4xl font-bold mb-2">
@@ -99,7 +100,7 @@ export default function FeaturedWork() {
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-250px object-cover group-hover:scale-105 transition duration-300"
+                          className="w-full h-[250px] object-cover group-hover:scale-105 transition duration-300"
                         />
 
                         <div className="p-4">
