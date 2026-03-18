@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import TechnicalSkills from "@/components/TechnicalSkills";
-
+import FeaturedWork from "@/components/FeaturedWork";
 import ToolsMarquee from "@/components/ToolsMarquee";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
@@ -162,7 +162,7 @@ export default function Home() {
             <main>
               <Hero />
               <About />
-              
+              <FeaturedWork />
               <TechnicalSkills />
               <Skills />
               <ToolsMarquee />
