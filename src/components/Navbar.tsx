@@ -46,7 +46,7 @@ export function Navbar() {
         }}
       >
 
-<div className="max-w-7xl mx-auto px-8 sm:px-10 md:px-16 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+<div className="max-w-7xl mx-auto px-12 sm:px-14 md:px-20 grid grid-cols-[auto_1fr_auto] items-center gap-4">
 
           {/* Logo Left */}
           <div className="flex justify-start">
