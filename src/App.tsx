@@ -13,7 +13,7 @@ function FloatingContactButton() {
   const floatTimeRef = useRef(0);
 
   // WhatsApp number - change this to your number
-  const whatsappNumber = "1234567890"; // Replace with your WhatsApp number
+  const whatsappNumber = "03051008722"; // Replace with your WhatsApp number
 
   useEffect(() => {
     const handleScroll = () => {
