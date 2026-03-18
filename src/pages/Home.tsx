@@ -12,6 +12,7 @@ import  Process  from "@/components/sections/Process";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/Footer";
 import { CustomCursor } from "@/components/CustomCursor";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Testimonials } from "@/components/sections/Testimonials";
 export default function Home() {
   const [count, setCount] = useState(0);
