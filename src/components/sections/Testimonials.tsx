@@ -71,16 +71,16 @@ export function Testimonials() {
         </span>
 
         <h2
-          style={{
-            color: "white",
-            fontSize: "48px",
-            fontWeight: "900",
-            letterSpacing: "3px",
-            marginTop: "10px"
-          }}
-        >
-          TESTIMONIALS
-        </h2>
+  style={{
+    color: "white",
+    fontSize: "clamp(28px, 6vw, 48px)", // ✅ mobile pe chhota, desktop pe 48
+    fontWeight: "900",
+    letterSpacing: "3px",
+    marginTop: "10px",
+  }}
+>
+  TESTIMONIALS
+</h2>
 
         <div
           style={{

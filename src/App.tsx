@@ -97,12 +97,12 @@ function FloatingContactButton() {
       onClick={openWhatsApp}
       style={{
         position: "fixed",
-        right: "30px",
-        top: `${btnY}px`,
+        right: "8px",   // 🔹 8px se badha kar 16px – edge ke paas, but safe
+        bottom: "20px",  // ya agar tum top animation use kar rahe ho to `top: ${btnY}px`
         zIndex: 999,
         backgroundColor: "#25D366",
         color: "#FFFFFF",
-        padding: "16px",
+        padding: "12px",
         border: "none",
         cursor: "pointer",
         borderRadius: "50%",
@@ -111,8 +111,8 @@ function FloatingContactButton() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: "60px",
-        height: "60px",
+        width: "50px",
+        height: "50px",
         transition: "transform 0.2s ease, background-color 0.2s ease",
       }}
       onMouseEnter={(e) => {

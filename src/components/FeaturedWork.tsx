@@ -74,7 +74,7 @@ export default function FeaturedWork() {
           {/* Arrows */}
           <button
             onClick={prev}
-            className="absolute -left-6 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
+            className="absolute -left-3 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
             bg-white/10 border border-white/20 flex items-center justify-center
             hover:bg-yellow-400 hover:text-black transition"
           >
@@ -83,7 +83,7 @@ export default function FeaturedWork() {
 
           <button
             onClick={next}
-            className="absolute -right-6 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
+            className="absolute -right-3 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full 
             bg-white/10 border border-white/20 flex items-center justify-center
             hover:bg-yellow-400 hover:text-black transition"
           >
