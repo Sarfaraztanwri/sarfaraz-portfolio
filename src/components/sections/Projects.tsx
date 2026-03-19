@@ -5,6 +5,8 @@ type Work = {
   id: number;
   image: string;
   type: string;
+  link?: string;
+  
 };
 
 type Client = {
@@ -25,12 +27,32 @@ const CLIENTS: Client[] = [
     description:
       "A futuristic digital platform designed to connect urban explorers with the heartbeat of Los Angeles.",
     services: ["Web Design", "Development", "Interaction", "3D Assets"],
-    thumbnail: "/images/Kashmir_Solidarity_Day.jpg",
+    thumbnail: "/images/Kashmir_Solidarity_Day.jpg", 
     works: [
-      { id: 1, image: "/images/Kashmir_Solidarity_Day.jpg", type: "Landing Page" },
-      { id: 2, image: "/images/Champion_Insecticide_Ad.jpg", type: "Campaign" },
-      { id: 3, image: "/images/saliqu-logo.jpg", type: "Brand Assets" },
-      { id: 4, image: "/images/psl-safari.jpg", type: "Social Media" },
+      {
+    id: 1,
+    image: "/images/Kashmir_Solidarity_Day.jpg",
+    type: "Landing Page",
+    link: "https://yourwebsite.com", // 🌐 website
+  },
+      {
+    id: 2,
+    image: "/images/Champion_Insecticide_Ad.jpg",
+    type: "Campaign",
+    link: "/pdf/campaign.pdf", // 📄 PDF
+  },
+      {
+    id: 3,
+    image: "/images/saliqu-logo.jpg",
+    type: "Brand Assets",
+    // ❌ no link → sirf image (zoom ke liye)
+  },
+      {
+    id: 4,
+    image: "/images/psl-safari.jpg",
+    type: "Social Media",
+    link: "https://instagram.com", // 🌐 social link example
+  },
     ],
   },
   {
@@ -138,6 +160,7 @@ export default function Projects() {
   if (!activeClient) {
     return (
       <section
+      id="projects"
         style={{
           padding: "120px 40px",
           background: "#0A0A0A",
@@ -293,7 +316,7 @@ export default function Projects() {
         }}
       >
         {/* TEXT CARD */}
-        // TEXT CARD
+        
 <div
   style={{
     minWidth: "280px",     // ✅ mobile ke liye chhota
@@ -321,30 +344,96 @@ export default function Projects() {
         </div>
 
         {/* IMAGE CARDS */}
-        {activeClient.works.map((work) => (
-          <div
-  key={work.id}
-  style={{
-    minWidth: "280px",
-    maxWidth: "640px",
-    width: "80vw",         // ✅ mobile + desktop both
-    position: "relative",
-    flexShrink: 0,
-  }}
->
-            <img
-              src={work.image}
-              alt={work.type}
-              style={{
-                width: "100%",
-                height: "450px",
-                objectFit: "cover",
-                borderRadius: "20px",
-              }}
-            />
-            <p style={{ color: "#F5C518", marginTop: "10px" }}>{work.type}</p>
-          </div>
-        ))}
+{activeClient.works.map((work) => (
+  <div
+    key={work.id}
+    style={{
+      minWidth: "280px",
+      maxWidth: "640px",
+      width: "80vw",
+      position: "relative",
+      flexShrink: 0,
+      overflow: "hidden",
+      borderRadius: "20px",
+    }}
+    onMouseEnter={(e) => {
+      const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
+      const img = e.currentTarget.querySelector("img") as HTMLElement;
+
+      if (btn) btn.style.opacity = "1";
+      if (btn) btn.style.transform = "scale(1)";
+      if (img) img.style.transform = "scale(1.05)";
+    }}
+    onMouseLeave={(e) => {
+      const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
+      const img = e.currentTarget.querySelector("img") as HTMLElement;
+
+      if (btn) btn.style.opacity = "0";
+      if (btn) btn.style.transform = "scale(0.7)";
+      if (img) img.style.transform = "scale(1)";
+    }}
+  >
+
+    {/* 🔥 ARROW BUTTON (SVG ICON) */}
+    <div
+      className="arrow-btn"
+      onClick={(e) => {
+        e.stopPropagation();
+        window.open(work.image, "_blank");
+      }}
+      style={{
+        position: "absolute",
+        top: "14px",
+        right: "14px",
+        cursor: "pointer",
+        background: "rgba(0,0,0,0.6)",
+        borderRadius: "50%",
+        padding: "12px",
+        zIndex: 10,
+        backdropFilter: "blur(8px)",
+        border: "1px solid rgba(255,255,255,0.2)",
+
+        // 🔥 hidden by default
+        opacity: 0,
+        transform: "scale(0.7)",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="#F5C518"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M7 17L17 7" />
+        <path d="M7 7h10v10" />
+      </svg>
+    </div>
+
+    {/* IMAGE */}
+    <img
+      src={work.image}
+      alt={work.type}
+      style={{
+        width: "100%",
+        height: "450px",
+        objectFit: "cover",
+        borderRadius: "20px",
+        transition: "transform 0.5s ease",
+      }}
+    />
+
+    {/* TEXT */}
+    <p style={{ color: "#F5C518", marginTop: "10px" }}>
+      {work.type}
+    </p>
+
+  </div>
+))}
       </div>
     </section>
   );
