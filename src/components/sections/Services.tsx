@@ -69,7 +69,8 @@ export default function Services() {
                   style={{
                     backgroundColor: "#111111",
                     border: "1px solid #1f1f1f",
-                    transition: "transform 0.15s ease, border-color 0.3s ease, background-color 0.3s ease",
+                    transition:
+                      "transform 0.15s ease, border-color 0.3s ease, background-color 0.3s ease",
                   }}
                   onMouseMove={handleMouseMove}
                   onMouseEnter={handleMouseEnter}

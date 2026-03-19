@@ -6,7 +6,7 @@ import { About } from "@/components/sections/About";
 import TechnicalSkills from "@/components/TechnicalSkills";
 import FeaturedWork from "@/components/FeaturedWork";
 import ToolsMarquee from "@/components/ToolsMarquee";
-import Skills from "@/components/sections/Skills";
+import Services from "@/components/sections/Services";
 import Projects from "@/components/sections/Projects";
 import  Process  from "@/components/sections/Process";
 import { Contact } from "@/components/sections/Contact";
@@ -164,7 +164,7 @@ export default function Home() {
               <About />
               <FeaturedWork />
               <TechnicalSkills />
-              <Skills />
+              <Services />
               <ToolsMarquee />
               <Process />
               <Projects />
