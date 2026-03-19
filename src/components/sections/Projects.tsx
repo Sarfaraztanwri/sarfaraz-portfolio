@@ -200,48 +200,64 @@ export default function Projects() {
         >
           {CLIENTS.slice(0, visibleProjects).map((client) => (
             <div
-              key={client.id}
-              onClick={() => setActiveClient(client)}
-              onMouseMove={magnetic}
-              onMouseLeave={resetMagnetic}
-              style={{
-                cursor: "pointer",
-                overflow: "hidden",
-                borderRadius: "20px",
-              }}
-            >
-              <div style={{ overflow: "hidden", borderRadius: "20px" }}>
-                <img
-                  src={client.thumbnail}
-                  alt={client.name}
-                  style={{
-                    width: "100%",
-                    height: "420px",
-                    objectFit: "cover",
-                    transition: "transform 0.6s ease",
-                  }}
-                />
-              </div>
-              <div style={{ marginTop: "20px", color: "white" }}>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    letterSpacing: "2px",
-                    color: "#888",
-                  }}
-                >
-                  {client.type}
-                </p>
-                <h3
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: "700",
-                    color: "#F5C518",
-                  }}
-                >
-                  {client.name}
-                </h3>
-              </div>
+      key={client.id}
+      onClick={() => setActiveClient(client)}
+      onMouseMove={magnetic}
+      onMouseLeave={resetMagnetic}
+      style={{
+        cursor: "pointer",
+        overflow: "hidden",
+        borderRadius: "20px",
+        position: "relative", // 🔥 important
+      }}
+    >
+      {/* IMAGE */}
+      <div style={{ overflow: "hidden", borderRadius: "20px" }}>
+        <img
+          src={client.thumbnail}
+          alt={client.name}
+          style={{
+            width: "100%",
+            height: "420px",
+            objectFit: "cover",
+            transition: "transform 0.5s ease",
+          }}
+        />
+      </div>
+
+      {/* 🔥 OVERLAY */}
+      <div
+        className="overlay"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "420px",
+          background: "rgba(0,0,0,0.6)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          opacity: 0,
+          transition: "0.3s ease",
+        }}
+      >
+        <button
+          style={{
+            background: "#F5C518",
+            color: "#0A0A0A",
+            padding: "12px 30px",
+            borderRadius: "50px",
+            border: "none",
+            fontWeight: "700",
+            letterSpacing: "1px",
+            boxShadow: "0 0 20px rgba(245,197,24,0.6)",
+          }}
+        >
+          SEE DETAILS
+        </button>
+      </div>
             </div>
           ))}
         </div>
@@ -249,20 +265,30 @@ export default function Projects() {
         {visibleProjects < CLIENTS.length && (
           <div style={{ textAlign: "center", marginTop: "60px" }}>
             <button
-              onClick={() => setVisibleProjects(visibleProjects + 2)}
-              style={{
-                background: "#F5C518",
-                color: "#0A0A0A",
-                padding: "14px 40px",
-                borderRadius: "50px",
-                border: "none",
-                fontWeight: "700",
-                letterSpacing: "1px",
-                cursor: "pointer",
-              }}
-            >
-              SEE MORE
-            </button>
+  onClick={() => setVisibleProjects(visibleProjects + 2)}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.background = "#0A0A0A"; // 🔥 black theme
+    e.currentTarget.style.color = "#F5C518";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.background = "#F5C518";
+    e.currentTarget.style.color = "#0A0A0A";
+  }}
+  style={{
+    background: "#F5C518",
+    color: "#0A0A0A",
+    padding: "14px 40px",
+    borderRadius: "50px",
+    border: "none",
+    fontWeight: "700",
+    letterSpacing: "1px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+
+  }}
+>
+  SEE MORE
+</button>
           </div>
         )}
       </section>
