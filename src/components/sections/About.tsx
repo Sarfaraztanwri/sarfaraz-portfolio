@@ -41,7 +41,7 @@ export function About() {
                 <p>
                   I'm{" "}
                   <span className="text-white font-semibold">Sarfaraz Tanwri</span>, a passionate
-                  Graphic Designer with 4 years of experience and a Software Engineering student.
+                  Graphic Designer with 4+ years of experience and a Software Engineering student.
                 </p>
                 <p>
                   I specialize in creating impactful designs across branding, web, and print media.
