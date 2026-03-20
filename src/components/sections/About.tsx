@@ -38,20 +38,37 @@ export function About() {
           <div className="lg:col-span-7">
             <FadeIn direction="left" delay={0.2}>
               <div className="space-y-6 text-lg md:text-xl leading-relaxed" style={{ color: "#888" }}>
+
+                {/* ✅ Para 1 — Name + Title + Location keyword added */}
                 <p>
                   I'm{" "}
-                  <span className="text-white font-semibold">Sarfaraz Tanwri</span>, a passionate
-                  Graphic Designer with 4+ years of experience and a Software Engineering student.
+                  <span className="text-white font-semibold">Sarfaraz Tanwri</span>, a passionate{" "}
+                  <span className="text-white font-semibold">Freelance Graphic Designer & Web Developer</span>{" "}
+                  based in <span className="text-white font-semibold">Karachi, Pakistan</span> with
+                  4+ years of experience and a Software Engineering student.
                 </p>
+
+                {/* ✅ Para 2 — Services keywords added */}
                 <p>
-                  I specialize in creating impactful designs across branding, web, and print media.
-                  I believe in turning complex ideas into visually stunning, user-centric solutions.
-                  By bridging the gap between aesthetics and technical execution, I craft digital
-                  experiences that leave a lasting impression.
+                  I specialize in creating impactful designs across{" "}
+                  <span className="text-white font-semibold">branding, logo design, social media design</span>,
+                  web, and print media. I believe in turning complex ideas into visually stunning,
+                  user-centric solutions. By bridging the gap between aesthetics and technical
+                  execution, I craft digital experiences that leave a lasting impression.
                 </p>
+
+                {/* ✅ Para 3 — NEW: Services list for Google */}
+                <p>
+                  Whether you need a{" "}
+                  <span className="text-white font-semibold">logo design, brand identity, flyer design,
+                  social media creatives</span>, or a complete website — I deliver results that stand out.
+                </p>
+
+                {/* ✅ Para 4 — Location same as before */}
                 <p style={{ color: "#F5C518" }} className="font-medium">
                   Based in Karachi, Pakistan — ready to collaborate worldwide.
                 </p>
+
               </div>
             </FadeIn>
 
