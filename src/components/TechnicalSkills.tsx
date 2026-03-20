@@ -98,7 +98,7 @@ export default function TechnicalSkills() {
         className="text-center mb-20"
       >
         <h2 className="text-4xl font-bold tracking-tight">
-          Technical <span className="text-yellow-400">Skills</span>
+          TECHNICAL <span className="text-yellow-400">SKILLS</span>
         </h2>
       </motion.div>
 

@@ -59,7 +59,7 @@ export default function FeaturedWork() {
       <div className="max-w-[1200px] mx-auto px-4">
 
         <h2 className="text-4xl font-bold mb-2">
-          Featured <span className="text-yellow-400">Work</span>
+          FEATURED <span className="text-yellow-400">WORK</span>
         </h2>
         <p className="text-gray-400 mb-10">
           A glimpse of my recent design work
