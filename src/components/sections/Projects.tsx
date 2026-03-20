@@ -33,25 +33,24 @@ const CLIENTS: Client[] = [
     id: 1,
     image: "/images/Kashmir_Solidarity_Day.jpg",
     type: "Landing Page",
-    link: "https://yourwebsite.com", // 🌐 website
+    link: "https://yourwebsite.com",
   },
       {
     id: 2,
     image: "/images/Champion_Insecticide_Ad.jpg",
     type: "Campaign",
-    link: "/pdf/campaign.pdf", // 📄 PDF
+    link: "/pdf/campaign.pdf",
   },
       {
     id: 3,
     image: "/images/saliqu-logo.jpg",
     type: "Brand Assets",
-    // ❌ no link → sirf image (zoom ke liye)
   },
       {
     id: 4,
     image: "/images/psl-safari.jpg",
     type: "Social Media",
-    link: "https://instagram.com", // 🌐 social link example
+    link: "https://instagram.com",
   },
     ],
   },
@@ -160,7 +159,7 @@ export default function Projects() {
   if (!activeClient) {
     return (
       <section
-      id="projects"
+        id="projects"
         style={{
           padding: "120px 40px",
           background: "#0A0A0A",
@@ -200,64 +199,54 @@ export default function Projects() {
         >
           {CLIENTS.slice(0, visibleProjects).map((client) => (
             <div
-      key={client.id}
-      onClick={() => setActiveClient(client)}
-      onMouseMove={magnetic}
-      onMouseLeave={resetMagnetic}
-      style={{
-        cursor: "pointer",
-        overflow: "hidden",
-        borderRadius: "20px",
-        position: "relative", // 🔥 important
-      }}
-    >
-      {/* IMAGE */}
-      <div style={{ overflow: "hidden", borderRadius: "20px" }}>
-        <img
-          src={client.thumbnail}
-          alt={client.name}
-          style={{
-            width: "100%",
-            height: "420px",
-            objectFit: "cover",
-            transition: "transform 0.5s ease",
-          }}
-        />
-      </div>
+              key={client.id}
+              onClick={() => setActiveClient(client)}
+              onMouseMove={magnetic}
+              onMouseLeave={resetMagnetic}
+              style={{
+                cursor: "pointer",
+                overflow: "hidden",
+                borderRadius: "20px",
+              }}
+            >
+              <div style={{ overflow: "hidden", borderRadius: "20px" }}>
+                <img
+                  src={client.thumbnail}
+                  alt={client.name}
+                  style={{
+                    width: "100%",
+                    height: "420px",
+                    objectFit: "cover",
+                    transition: "transform 0.6s ease",
+                  }}
+                />
+              </div>
 
-      {/* 🔥 OVERLAY */}
-      <div
-        className="overlay"
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "420px",
-          background: "rgba(0,0,0,0.6)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-
-          opacity: 0,
-          transition: "0.3s ease",
-        }}
-      >
-        <button
-          style={{
-            background: "#F5C518",
-            color: "#0A0A0A",
-            padding: "12px 30px",
-            borderRadius: "50px",
-            border: "none",
-            fontWeight: "700",
-            letterSpacing: "1px",
-            boxShadow: "0 0 20px rgba(245,197,24,0.6)",
-          }}
-        >
-          SEE DETAILS
-        </button>
-      </div>
+              {/* ✅ Category + Yellow Title — Neon Nexus style */}
+              <div style={{ marginTop: "20px", color: "white" }}>
+                <p
+                  style={{
+                    fontSize: "12px",
+                    letterSpacing: "2px",
+                    color: "#888",
+                    fontWeight: "600",
+                    margin: 0,
+                  }}
+                >
+                  {client.type}
+                </p>
+                <h3
+                  style={{
+                    fontSize: "32px",
+                    fontWeight: "700",
+                    color: "#F5C518",
+                    marginTop: "6px",
+                    lineHeight: "1.1",
+                  }}
+                >
+                  {client.name}
+                </h3>
+              </div>
             </div>
           ))}
         </div>
@@ -265,30 +254,29 @@ export default function Projects() {
         {visibleProjects < CLIENTS.length && (
           <div style={{ textAlign: "center", marginTop: "60px" }}>
             <button
-  onClick={() => setVisibleProjects(visibleProjects + 2)}
-  onMouseEnter={(e) => {
-    e.currentTarget.style.background = "#0A0A0A"; // 🔥 black theme
-    e.currentTarget.style.color = "#F5C518";
-  }}
-  onMouseLeave={(e) => {
-    e.currentTarget.style.background = "#F5C518";
-    e.currentTarget.style.color = "#0A0A0A";
-  }}
-  style={{
-    background: "#F5C518",
-    color: "#0A0A0A",
-    padding: "14px 40px",
-    borderRadius: "50px",
-    border: "none",
-    fontWeight: "700",
-    letterSpacing: "1px",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-
-  }}
->
-  SEE MORE
-</button>
+              onClick={() => setVisibleProjects(visibleProjects + 2)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#0A0A0A";
+                e.currentTarget.style.color = "#F5C518";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#F5C518";
+                e.currentTarget.style.color = "#0A0A0A";
+              }}
+              style={{
+                background: "#F5C518",
+                color: "#0A0A0A",
+                padding: "14px 40px",
+                borderRadius: "50px",
+                border: "none",
+                fontWeight: "700",
+                letterSpacing: "1px",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+            >
+              SEE MORE
+            </button>
           </div>
         )}
       </section>
@@ -342,16 +330,15 @@ export default function Projects() {
         }}
       >
         {/* TEXT CARD */}
-        
-<div
-  style={{
-    minWidth: "280px",     // ✅ mobile ke liye chhota
-    maxWidth: "480px",     // ✅ desktop pe limit
-    width: "80vw",         // ✅ viewport ka 80%
-    color: "white",
-    flexShrink: 0,
-  }}
->
+        <div
+          style={{
+            minWidth: "280px",
+            maxWidth: "480px",
+            width: "80vw",
+            color: "white",
+            flexShrink: 0,
+          }}
+        >
           <p style={{ color: "#888", fontSize: "12px" }}>
             {activeClient.type} — 2024
           </p>
@@ -370,96 +357,90 @@ export default function Projects() {
         </div>
 
         {/* IMAGE CARDS */}
-{activeClient.works.map((work) => (
-  <div
-    key={work.id}
-    style={{
-      minWidth: "280px",
-      maxWidth: "640px",
-      width: "80vw",
-      position: "relative",
-      flexShrink: 0,
-      overflow: "hidden",
-      borderRadius: "20px",
-    }}
-    onMouseEnter={(e) => {
-      const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
-      const img = e.currentTarget.querySelector("img") as HTMLElement;
+        {activeClient.works.map((work) => (
+          <div
+            key={work.id}
+            style={{
+              minWidth: "280px",
+              maxWidth: "640px",
+              width: "80vw",
+              position: "relative",
+              flexShrink: 0,
+              overflow: "hidden",
+              borderRadius: "20px",
+            }}
+            onMouseEnter={(e) => {
+              const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
+              const img = e.currentTarget.querySelector("img") as HTMLElement;
+              if (btn) btn.style.opacity = "1";
+              if (btn) btn.style.transform = "scale(1)";
+              if (img) img.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
+              const img = e.currentTarget.querySelector("img") as HTMLElement;
+              if (btn) btn.style.opacity = "0";
+              if (btn) btn.style.transform = "scale(0.7)";
+              if (img) img.style.transform = "scale(1)";
+            }}
+          >
+            {/* ARROW BUTTON */}
+            <div
+              className="arrow-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(work.image, "_blank");
+              }}
+              style={{
+                position: "absolute",
+                top: "14px",
+                right: "14px",
+                cursor: "pointer",
+                background: "rgba(0,0,0,0.6)",
+                borderRadius: "50%",
+                padding: "12px",
+                zIndex: 10,
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                opacity: 0,
+                transform: "scale(0.7)",
+                transition: "all 0.3s ease",
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#F5C518"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </div>
 
-      if (btn) btn.style.opacity = "1";
-      if (btn) btn.style.transform = "scale(1)";
-      if (img) img.style.transform = "scale(1.05)";
-    }}
-    onMouseLeave={(e) => {
-      const btn = e.currentTarget.querySelector(".arrow-btn") as HTMLElement;
-      const img = e.currentTarget.querySelector("img") as HTMLElement;
+            {/* IMAGE */}
+            <img
+              src={work.image}
+              alt={work.type}
+              style={{
+                width: "100%",
+                height: "450px",
+                objectFit: "cover",
+                borderRadius: "20px",
+                transition: "transform 0.5s ease",
+              }}
+            />
 
-      if (btn) btn.style.opacity = "0";
-      if (btn) btn.style.transform = "scale(0.7)";
-      if (img) img.style.transform = "scale(1)";
-    }}
-  >
-
-    {/* 🔥 ARROW BUTTON (SVG ICON) */}
-    <div
-      className="arrow-btn"
-      onClick={(e) => {
-        e.stopPropagation();
-        window.open(work.image, "_blank");
-      }}
-      style={{
-        position: "absolute",
-        top: "14px",
-        right: "14px",
-        cursor: "pointer",
-        background: "rgba(0,0,0,0.6)",
-        borderRadius: "50%",
-        padding: "12px",
-        zIndex: 10,
-        backdropFilter: "blur(8px)",
-        border: "1px solid rgba(255,255,255,0.2)",
-
-        // 🔥 hidden by default
-        opacity: 0,
-        transform: "scale(0.7)",
-        transition: "all 0.3s ease",
-      }}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="none"
-        stroke="#F5C518"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M7 17L17 7" />
-        <path d="M7 7h10v10" />
-      </svg>
-    </div>
-
-    {/* IMAGE */}
-    <img
-      src={work.image}
-      alt={work.type}
-      style={{
-        width: "100%",
-        height: "450px",
-        objectFit: "cover",
-        borderRadius: "20px",
-        transition: "transform 0.5s ease",
-      }}
-    />
-
-    {/* TEXT */}
-    <p style={{ color: "#F5C518", marginTop: "10px" }}>
-      {work.type}
-    </p>
-
-  </div>
-))}
+            {/* TYPE LABEL */}
+            <p style={{ color: "#F5C518", marginTop: "10px" }}>
+              {work.type}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
